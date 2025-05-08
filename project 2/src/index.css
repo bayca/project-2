@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply text-slate-700 font-sans;
+    overscroll-behavior-y: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-blue-900;
+  }
+
+  /* Improve touch targets on mobile */
+  button, a {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}
+
+@layer utilities {
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - 2rem));
+    }
+  }
+
+  .animate-wave {
+    animation: wave 20s linear infinite;
+    background-size: 100% 100%;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(-25%) translateY(2%);
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Improve mobile form inputs */
+@media (max-width: 640px) {
+  input, select, textarea {
+    @apply text-base;
+    font-size: 16px !important;
+  }
+}
